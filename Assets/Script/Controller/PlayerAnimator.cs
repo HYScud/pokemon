@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class PlayerAnimator : MonoBehaviour
 {
 
-    private PlayerActionState curState = PlayerActionState.Normal;
+    private PlayerActionStateEnum curState = PlayerActionStateEnum.Normal;
     [SerializeField] List<Sprite> walkDownSprites;
     [SerializeField] List<Sprite> walkUpSprites;
     [SerializeField] List<Sprite> walkLeftSprites;
@@ -29,7 +29,7 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] List<Sprite> WaterWalkRightSprites;
 
     private CharacterAnimator animator;
-    internal PlayerActionState CurState { get => curState; set => curState = value; }
+    internal PlayerActionStateEnum CurState { get => curState; set => curState = value; }
      
     public void ChangeMoveX(float moveX)
     {
@@ -58,19 +58,19 @@ public class PlayerAnimator : MonoBehaviour
         Debug.Log("…Ë÷√∂Øª≠Õº∆¨◊È");
         switch (curState)
         {
-            case PlayerActionState.Run:
+            case PlayerActionStateEnum.Run:
                 animator.DownSprites = runDownSprites;
                 animator.UpSprites = runDownSprites;
                 animator.LeftSprites = runDownSprites;
                 animator.RightSprites = runDownSprites;
                 break;
-            case PlayerActionState.Bicycle:
+            case PlayerActionStateEnum.Bicycle:
                 animator.DownSprites = BicycleDownSprites;
                 animator.UpSprites = BicycleUpSprites;
                 animator.LeftSprites = BicycleLeftSprites;
                 animator.RightSprites = BicycleRightSprites;
                 break;
-            case PlayerActionState.WaterWalk:
+            case PlayerActionStateEnum.WaterWalk:
                 animator.DownSprites = WaterWalkDownSprites;
                 animator.UpSprites = WaterWalkUpSprites;
                 animator.LeftSprites = WaterWalkLeftSprites;

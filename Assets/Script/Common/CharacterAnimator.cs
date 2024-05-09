@@ -9,7 +9,6 @@ public class CharacterAnimator : MonoBehaviour
     private float moveY;
     private float moveX;
     private bool isMoving;
-    private MoveDirection currentDir=MoveDirection.Down;
 
     [SerializeField] public List<Sprite> DownSprites { get; set; }
     [SerializeField] public List<Sprite> UpSprites { get; set; }
@@ -71,22 +70,18 @@ public class CharacterAnimator : MonoBehaviour
         if (MoveX == 1)
         {
             currentAnim = walkRightAnim;
-            currentDir = MoveDirection.Right;
         }
         else if (MoveX == -1)
         {
             currentAnim = walkLeftAnim;
-            currentDir = MoveDirection.Left;
         }
         else if (MoveY == 1)
         {
             currentAnim = walkUpAnim;
-            currentDir = MoveDirection.Up;
         }
         else
         {
             currentAnim = walkDownAnim;
-            currentDir = MoveDirection.Down;
         }
     }
 
