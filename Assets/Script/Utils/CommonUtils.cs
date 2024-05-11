@@ -8,7 +8,7 @@ public class CommonUtils
 
     public static void CorrectPosition(Vector3 pos)
     {
-        pos.x = Mathf.Round(pos.x-0.5f);
+        pos.x = Mathf.Round(pos.x - 0.5f);
         pos.y = Mathf.Round(pos.y - 0.5f);
         pos.z = Mathf.Round(pos.z);
     }
@@ -25,7 +25,7 @@ public class CommonUtils
         return true;
     }
 
-    public static void SaveCharacterPos(long id,Vector3 targetPos)
+    public static void SaveCharacterPos(long id, Vector3 targetPos)
     {
         if (!AllUnreachablePos.ContainsKey(id))
         {

@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using NPOI.OpenXmlFormats.Spreadsheet;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         transform.position = vector3;
+        this.SetOrder();
     }
 
     // Update is called once per frame
@@ -159,7 +161,9 @@ public class PlayerController : MonoBehaviour
         CommonUtils.CorrectPosition(transform.position);
         isMoving = false;
         playerState = PlayerStateEnum.Normal;
+        this.SetOrder();
         CheckForEncounters();
+
     }
 
     public bool CheckWalkable(Vector3 targetPos){
@@ -173,6 +177,7 @@ public class PlayerController : MonoBehaviour
 
     public void CheckForEncounters()
     {
+        Debug.Log("打印检测进入战斗");
         //这里处理并不是很好，会有房子Tile的collider，目前无法手动设置collider范围 出现半格（TODO：优化检测/替换collider）
         if (Physics2D.OverlapCircle(transform.position, 0.15f, GrassLayer) != null)
         {
@@ -207,6 +212,11 @@ public class PlayerController : MonoBehaviour
         playerState = PlayerStateEnum.Battle;
     }
 
+    public void SetOrder()
+    {
+        var spriteRender = gameObject.GetComponent<SpriteRenderer>();
+        spriteRender.sortingOrder = Mathf.FloorToInt(transform.position.y);
+    }
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, 0.15f);
