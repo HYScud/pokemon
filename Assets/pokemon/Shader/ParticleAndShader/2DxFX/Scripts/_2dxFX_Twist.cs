@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -18,11 +17,11 @@ public class _2dxFX_Twist : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/Twist";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
-    [HideInInspector] [Range(-1, 1)] public float Distortion = 1.6f;
-    [HideInInspector] [Range(-1, 2)] public float _PosX = 0.5f;
-    [HideInInspector] [Range(-1, 2)] public float _PosY = 0.5f;
+    [HideInInspector][Range(-1, 1)] public float Distortion = 1.6f;
+    [HideInInspector][Range(-1, 2)] public float _PosX = 0.5f;
+    [HideInInspector][Range(-1, 2)] public float _PosY = 0.5f;
     [HideInInspector] public Color _ColorX = new Color(1f, 1f, 1f, 1f);
 
     [HideInInspector] public int ShaderChange = 0;
@@ -30,7 +29,7 @@ public class _2dxFX_Twist : MonoBehaviour
 
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -147,7 +146,7 @@ public class _2dxFX_Twist : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -170,7 +169,7 @@ public class _2dxFX_Twist : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
         if (gameObject.activeSelf && defaultMaterial != null)
         {
             if (CanvasSpriteRenderer != null)
@@ -188,7 +187,7 @@ public class _2dxFX_Twist : MonoBehaviour
 
     void OnEnable()
     {
-       
+
         if (defaultMaterial == null)
         {
             defaultMaterial = new Material(Shader.Find("Sprites/Default"));

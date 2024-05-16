@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -17,15 +16,15 @@ public class _2dxFX_BurningFX : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/BurningFX";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
-    [HideInInspector] [Range(0, 4)] public float Colors = 1.0f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 4)] public float Colors = 1.0f;
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
 
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {

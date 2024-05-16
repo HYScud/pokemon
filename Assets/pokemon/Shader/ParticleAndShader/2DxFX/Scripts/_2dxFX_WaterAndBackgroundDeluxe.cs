@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -18,19 +17,19 @@ public class _2dxFX_WaterAndBackgroundDeluxe : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/WaterAndBackgroundDeluxe";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
-    [HideInInspector] [Range(0.0f, 4f)] public float Heat = 1.0f;
-    [HideInInspector] [Range(0.0f, 4f)] public float Speed = 1.0f;
-    [HideInInspector] [Range(0.0f, 1f)] public float EValue = 1.0f;
-    [HideInInspector] [Range(-4.0f, 4f)] public float Light = 3.0f;
+    [HideInInspector][Range(0.0f, 4f)] public float Heat = 1.0f;
+    [HideInInspector][Range(0.0f, 4f)] public float Speed = 1.0f;
+    [HideInInspector][Range(0.0f, 1f)] public float EValue = 1.0f;
+    [HideInInspector][Range(-4.0f, 4f)] public float Light = 3.0f;
 
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -150,7 +149,7 @@ public class _2dxFX_WaterAndBackgroundDeluxe : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -173,7 +172,7 @@ public class _2dxFX_WaterAndBackgroundDeluxe : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
         if (gameObject.activeSelf && defaultMaterial != null)
         {
             if (CanvasSpriteRenderer != null)
@@ -191,7 +190,7 @@ public class _2dxFX_WaterAndBackgroundDeluxe : MonoBehaviour
 
     void OnEnable()
     {
-       
+
         if (defaultMaterial == null)
         {
             defaultMaterial = new Material(Shader.Find("Sprites/Default"));

@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -18,18 +17,18 @@ public class _2dxFX_EnergyBar : MonoBehaviour
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/EnergyBar";
 
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
-    [HideInInspector] [Range(0f, 1f)] public float BarProgress = 0.5f;
-    [HideInInspector] [Range(0.9f, 1f)] public float _Value2 = 0.975f;
-    [HideInInspector] [Range(0f, 0.5f)] public float _Value3 = 0.5f;
-    [HideInInspector] [Range(0f, 1f)] public float _Value4 = 1.0f;
-    [HideInInspector] [Range(0f, 1f)] public float _Value5 = 0.0f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0f, 1f)] public float BarProgress = 0.5f;
+    [HideInInspector][Range(0.9f, 1f)] public float _Value2 = 0.975f;
+    [HideInInspector][Range(0f, 0.5f)] public float _Value3 = 0.5f;
+    [HideInInspector][Range(0f, 1f)] public float _Value4 = 1.0f;
+    [HideInInspector][Range(0f, 1f)] public float _Value5 = 0.0f;
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {

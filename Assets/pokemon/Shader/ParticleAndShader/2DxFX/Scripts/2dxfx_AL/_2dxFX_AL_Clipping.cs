@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -22,19 +21,19 @@ public class _2dxFX_AL_Clipping : MonoBehaviour
     [HideInInspector] public int BlendMode = 0;
 
     private string shader = "2DxFX/AL/Clipping";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
-    [HideInInspector] [Range(0f, 1f)] public float _ClipLeft = 0f;
-    [HideInInspector] [Range(0f, 1f)] public float _ClipRight = 0f;
-    [HideInInspector] [Range(0f, 1f)] public float _ClipUp = 0f;
-    [HideInInspector] [Range(0f, 1f)] public float _ClipDown = 0f;
+    [HideInInspector][Range(0f, 1f)] public float _ClipLeft = 0f;
+    [HideInInspector][Range(0f, 1f)] public float _ClipRight = 0f;
+    [HideInInspector][Range(0f, 1f)] public float _ClipUp = 0f;
+    [HideInInspector][Range(0f, 1f)] public float _ClipDown = 0f;
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
 
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -232,7 +231,7 @@ public class _2dxFX_AL_Clipping : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -255,7 +254,7 @@ public class _2dxFX_AL_Clipping : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
         if (gameObject.activeSelf && defaultMaterial != null)
         {
             if (CanvasSpriteRenderer != null)
@@ -273,7 +272,7 @@ public class _2dxFX_AL_Clipping : MonoBehaviour
 
     void OnEnable()
     {
-       
+
         if (defaultMaterial == null)
         {
             defaultMaterial = new Material(Shader.Find("Sprites/Default"));

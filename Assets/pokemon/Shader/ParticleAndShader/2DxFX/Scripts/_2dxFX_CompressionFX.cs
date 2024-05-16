@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -17,15 +16,15 @@ public class _2dxFX_CompressionFX : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/CompressionFX";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
-    [HideInInspector] [Range(1, 128)] public float Parasite = 64.0f;
+    [HideInInspector][Range(1, 128)] public float Parasite = 64.0f;
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {

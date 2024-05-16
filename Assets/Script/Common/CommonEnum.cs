@@ -1,5 +1,3 @@
-using System;
-
 /******************玩家枚举**********************/
 enum PlayerActionStateEnum
 {
@@ -22,13 +20,19 @@ enum PlayerStateEnum
 /******************战斗枚举**********************/
 public enum BattleTypeEnum
 {
-    Wild_Batlle_Single,
-    Wild_Battle_Double,
-    Wild_Battle_Three,
-    Wild_Battle_Multiple,
-    PVP_Single,
-    PVP_Double,
-    PVP_Three,
+    Wild,
+    PVP,
+    PVE,
+    Boss,
+    Plot,
+    Champion,
+}
+public enum BattleNumTypeEnum
+{
+    Single,
+    Double,
+    Three,
+    Multiple,
 }
 /******************战斗枚举End**********************/
 

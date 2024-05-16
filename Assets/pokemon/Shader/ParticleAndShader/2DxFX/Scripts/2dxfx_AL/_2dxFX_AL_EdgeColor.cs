@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -22,7 +21,7 @@ public class _2dxFX_AL_EdgeColor : MonoBehaviour
     [HideInInspector] public int BlendMode = 0;
 
     private string shader = "2DxFX/AL/EdgeColor";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
     [HideInInspector] public Color _Color = new Color(0f, 1f, 1f, 1f);
 
 
@@ -32,7 +31,7 @@ public class _2dxFX_AL_EdgeColor : MonoBehaviour
 
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -102,30 +101,30 @@ public class _2dxFX_AL_EdgeColor : MonoBehaviour
         }
 
 #if UNITY_EDITOR
-string dfname = "";
-if(CanvasSpriteRenderer != null) dfname=CanvasSpriteRenderer.sharedMaterial.shader.name;
-if(CanvasImage != null) 
-{
-Image img = CanvasImage;
-if (img.material==null)	dfname="Sprites/Default";
-}
-if (dfname == "Sprites/Default")
-{
-ForceMaterial.shader=Shader.Find(shader);
-ForceMaterial.hideFlags = HideFlags.None;
-if(CanvasSpriteRenderer != null)
-{
-CanvasSpriteRenderer.sharedMaterial = ForceMaterial;
-}
-else if(CanvasImage != null)
-{
-Image img = CanvasImage;
-if (img.material==null)
-{
-CanvasImage.material = ForceMaterial;
-}
-}
-}
+        string dfname = "";
+        if (CanvasSpriteRenderer != null) dfname = CanvasSpriteRenderer.sharedMaterial.shader.name;
+        if (CanvasImage != null)
+        {
+            Image img = CanvasImage;
+            if (img.material == null) dfname = "Sprites/Default";
+        }
+        if (dfname == "Sprites/Default")
+        {
+            ForceMaterial.shader = Shader.Find(shader);
+            ForceMaterial.hideFlags = HideFlags.None;
+            if (CanvasSpriteRenderer != null)
+            {
+                CanvasSpriteRenderer.sharedMaterial = ForceMaterial;
+            }
+            else if (CanvasImage != null)
+            {
+                Image img = CanvasImage;
+                if (img.material == null)
+                {
+                    CanvasImage.material = ForceMaterial;
+                }
+            }
+        }
 #endif
         if (ActiveChange)
         {
@@ -315,37 +314,37 @@ CanvasImage.material = ForceMaterial;
 
 
 #if UNITY_EDITOR
-[CustomEditor(typeof(_2dxFX_AL_EdgeColor)),CanEditMultipleObjects]
+[CustomEditor(typeof(_2dxFX_AL_EdgeColor)), CanEditMultipleObjects]
 public class _2dxFX_AL_EdgeColor_Editor : Editor
 {
-private SerializedObject m_object;
+    private SerializedObject m_object;
 
-public void OnEnable()
-{
+    public void OnEnable()
+    {
 
-m_object = new SerializedObject(targets);
-}
+        m_object = new SerializedObject(targets);
+    }
 
-public override void OnInspectorGUI()
-{
-m_object.Update();
-DrawDefaultInspector();
+    public override void OnInspectorGUI()
+    {
+        m_object.Update();
+        DrawDefaultInspector();
 
-_2dxFX_AL_EdgeColor _2dxScript = (_2dxFX_AL_EdgeColor)target;
+        _2dxFX_AL_EdgeColor _2dxScript = (_2dxFX_AL_EdgeColor)target;
 
-Texture2D icon = Resources.Load ("2dxfxinspector-al") as Texture2D;
-if (icon)
-{
-Rect r;
-float ih=icon.height;
-float iw=icon.width;
-float result=ih/iw;
-float w=Screen.width;
-result=result*w;
-r = GUILayoutUtility.GetRect(ih, result);
-EditorGUI.DrawTextureTransparent(r,icon);
-}
- EditorGUILayout.LabelField("Advanced Lightning may work on mobile high-end devices and may be slower than the Standard 2DxFX effects due to is lightning system. Use it only if you need it.", EditorStyles.helpBox);
+        Texture2D icon = Resources.Load("2dxfxinspector-al") as Texture2D;
+        if (icon)
+        {
+            Rect r;
+            float ih = icon.height;
+            float iw = icon.width;
+            float result = ih / iw;
+            float w = Screen.width;
+            result = result * w;
+            r = GUILayoutUtility.GetRect(ih, result);
+            EditorGUI.DrawTextureTransparent(r, icon);
+        }
+        EditorGUILayout.LabelField("Advanced Lightning may work on mobile high-end devices and may be slower than the Standard 2DxFX effects due to is lightning system. Use it only if you need it.", EditorStyles.helpBox);
         EditorGUILayout.PropertyField(m_object.FindProperty("AddShadow"), new GUIContent("Add Shadow", "Use a unique material, reduce drastically the use of draw call"));
         if (_2dxScript.AddShadow)
         {
@@ -372,41 +371,41 @@ EditorGUI.DrawTextureTransparent(r,icon);
 
         EditorGUILayout.PropertyField(m_object.FindProperty("ForceMaterial"), new GUIContent("Shared Material", "Use a unique material, reduce drastically the use of draw call"));
 
-if (_2dxScript.ForceMaterial == null)
-{
-_2dxScript.ActiveChange = true;
-}
-else
-{
-if(GUILayout.Button("Remove Shared Material"))
-{
-_2dxScript.ForceMaterial= null;
-_2dxScript.ShaderChange = 1;
-_2dxScript.ActiveChange = true;
-_2dxScript.CallUpdate();
-}
+        if (_2dxScript.ForceMaterial == null)
+        {
+            _2dxScript.ActiveChange = true;
+        }
+        else
+        {
+            if (GUILayout.Button("Remove Shared Material"))
+            {
+                _2dxScript.ForceMaterial = null;
+                _2dxScript.ShaderChange = 1;
+                _2dxScript.ActiveChange = true;
+                _2dxScript.CallUpdate();
+            }
 
-EditorGUILayout.PropertyField (m_object.FindProperty ("ActiveChange"), new GUIContent ("Change Material Property", "Change The Material Property"));
-}
+            EditorGUILayout.PropertyField(m_object.FindProperty("ActiveChange"), new GUIContent("Change Material Property", "Change The Material Property"));
+        }
 
-if (_2dxScript.ActiveChange)
-{
+        if (_2dxScript.ActiveChange)
+        {
 
-EditorGUILayout.BeginVertical("Box");
+            EditorGUILayout.BeginVertical("Box");
 
-Texture2D icone = Resources.Load ("2dxfx-icon-color") as Texture2D;
-EditorGUILayout.PropertyField(m_object.FindProperty("_Color"), new GUIContent("Edge Color", icone, "Change the Edge Color"));
+            Texture2D icone = Resources.Load("2dxfx-icon-color") as Texture2D;
+            EditorGUILayout.PropertyField(m_object.FindProperty("_Color"), new GUIContent("Edge Color", icone, "Change the Edge Color"));
 
 
-EditorGUILayout.BeginVertical("Box");
+            EditorGUILayout.BeginVertical("Box");
 
-icone = Resources.Load ("2dxfx-icon-fade") as Texture2D;
-EditorGUILayout.PropertyField(m_object.FindProperty("_Alpha"), new GUIContent("Fading", icone, "Fade from nothing to showing"));
+            icone = Resources.Load("2dxfx-icon-fade") as Texture2D;
+            EditorGUILayout.PropertyField(m_object.FindProperty("_Alpha"), new GUIContent("Fading", icone, "Fade from nothing to showing"));
 
-EditorGUILayout.EndVertical();
-EditorGUILayout.EndVertical();
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.EndVertical();
 
- EditorGUILayout.BeginVertical("Box");
+            EditorGUILayout.BeginVertical("Box");
             EditorGUILayout.LabelField("Change Blend Fusion = " + BlendMethode, EditorStyles.whiteLargeLabel);
             if (_2dxScript.ReceivedShadow)
             {
@@ -466,10 +465,10 @@ EditorGUILayout.EndVertical();
             }
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.EndVertical();
-}
+        }
 
-m_object.ApplyModifiedProperties();
+        m_object.ApplyModifiedProperties();
 
-}
+    }
 }
 #endif

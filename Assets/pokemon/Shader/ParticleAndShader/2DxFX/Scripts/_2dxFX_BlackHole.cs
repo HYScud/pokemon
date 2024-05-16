@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -17,19 +16,19 @@ public class _2dxFX_BlackHole : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/BlackHole";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
     [HideInInspector] public Color _Color = new Color(1f, 1f, 1f, 1f);
-    [HideInInspector] [Range(-1, 1)] public float Distortion = 1.6f;
-    [HideInInspector] [Range(0, 0.5f)] public float _Hole = 0;
-    [HideInInspector] [Range(-10, 10)] public float Speed = 4;
+    [HideInInspector][Range(-1, 1)] public float Distortion = 1.6f;
+    [HideInInspector][Range(0, 0.5f)] public float _Hole = 0;
+    [HideInInspector][Range(-10, 10)] public float Speed = 4;
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
 
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {

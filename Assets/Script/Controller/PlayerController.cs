@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using NPOI.OpenXmlFormats.Spreadsheet;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,10 +10,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask GrassLayer;//浅草层
     public LayerMask DeepGrassLayer;
     private PlayerAnimator playerAnimator;//玩家动画控制
-    private bool isMoving=false;//是否可以移动
+    private bool isMoving = false;//是否可以移动
 
     /*玩家数据*/
-    public float moveSpeed=6;//玩家移动速度
+    public float moveSpeed = 6;//玩家移动速度
     private Vector3 vector3 = new Vector3(0, 0, 0);//玩家坐标
     private MoveDirection playerCurDir = MoveDirection.Down;//玩家朝向
     private PlayerStateEnum playerState = PlayerStateEnum.Normal;//玩家状态
@@ -22,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     /*构造器*/
     public MoveDirection PlayerCurDir { get => playerCurDir; set => playerCurDir = value; }
-    internal PlayerStateEnum PlayerState { get => playerState;}
+    internal PlayerStateEnum PlayerState { get => playerState; }
 
     private void Awake()
     {
@@ -45,13 +44,13 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-         
+
         }
     }
 
     private void ToMove()
     {
-        if (!isMoving&&PlayerState==PlayerStateEnum.Normal)
+        if (!isMoving && PlayerState == PlayerStateEnum.Normal)
         {
             m_Input.x = Input.GetAxisRaw("Horizontal");
             m_Input.y = Input.GetAxisRaw("Vertical");
@@ -98,7 +97,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator.ChangeisMoving(isMoving);
     }
 
-     public async UniTaskVoid ChangeFaceDir(Vector2 pos)
+    public async UniTaskVoid ChangeFaceDir(Vector2 pos)
     {
         if (pos.x == 1)
         {
@@ -110,12 +109,12 @@ public class PlayerController : MonoBehaviour
             playerCurDir = MoveDirection.Left;
             playerAnimator.SetRoleFaceDir(MoveDirection.Left);
         }
-        if (pos.y == -1 )
+        if (pos.y == -1)
         {
             playerCurDir = MoveDirection.Down;
             playerAnimator.SetRoleFaceDir(MoveDirection.Down);
         }
-        if (pos.y == 1 )
+        if (pos.y == 1)
         {
             playerCurDir = MoveDirection.Up;
             playerAnimator.SetRoleFaceDir(MoveDirection.Up);
@@ -127,7 +126,7 @@ public class PlayerController : MonoBehaviour
 
     public bool CheckSameDirWithNextMove(Vector2 pos)
     {
-        Debug.Log("******Check Same" + pos+"******CurDir"+ playerCurDir);
+        Debug.Log("******Check Same" + pos + "******CurDir" + playerCurDir);
         if (pos.x == 1 && playerCurDir == MoveDirection.Right)
         {
             return true;
@@ -148,7 +147,7 @@ public class PlayerController : MonoBehaviour
     }
     async UniTaskVoid Move(Vector3 targetPos)
     {
-        Debug.Log("moveTargetPos："+targetPos);
+        Debug.Log("moveTargetPos：" + targetPos);
         CommonUtils.SaveCharacterPos(playerInfo.PlayerId, targetPos);
         while ((targetPos - transform.position).sqrMagnitude > 0.00001f)
         {
@@ -156,7 +155,7 @@ public class PlayerController : MonoBehaviour
             await UniTask.Yield();
             await UniTask.NextFrame();
         }
-        Debug.Log("Player MoveOver curPos"+ transform.position+"**"+targetPos);
+        Debug.Log("Player MoveOver curPos" + transform.position + "**" + targetPos);
         transform.position = targetPos;
         CommonUtils.CorrectPosition(transform.position);
         isMoving = false;
@@ -166,9 +165,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public bool CheckWalkable(Vector3 targetPos){
+    public bool CheckWalkable(Vector3 targetPos)
+    {
         //这里处理并不是很好，会有房子Tile的collider，目前无法手动设置collider范围 出现半格（TODO：优化检测/替换collider）
-        if(Physics2D.OverlapCircle(targetPos,0.15f, BuildingLayer)!=null)
+        if (Physics2D.OverlapCircle(targetPos, 0.15f, BuildingLayer) != null)
         {
             return false;
         }
@@ -184,29 +184,29 @@ public class PlayerController : MonoBehaviour
             if (Random.Range(1, 200) > 30)
             {
                 if (Random.Range(1, 10) > 7)
-                    TurnToBatlle(BattleTypeEnum.Wild_Battle_Multiple);
+                    TurnToBatlle(BattleTypeEnum.Wild, BattleNumTypeEnum.Multiple);
                 else
-                    TurnToBatlle(BattleTypeEnum.Wild_Batlle_Single);
+                    TurnToBatlle(BattleTypeEnum.Wild, BattleNumTypeEnum.Single);
             }
         }
-        if(Physics2D.OverlapCircle(transform.position, 0.15f, DeepGrassLayer) != null)
+        if (Physics2D.OverlapCircle(transform.position, 0.15f, DeepGrassLayer) != null)
         {
             if (Random.Range(1, 200) > 30)
             {
                 var battleTypeRandom = Random.Range(1, 10);
                 if (battleTypeRandom > 8)
-                    TurnToBatlle(BattleTypeEnum.Wild_Battle_Multiple);
-                else if (battleTypeRandom>4)
+                    TurnToBatlle(BattleTypeEnum.Wild, BattleNumTypeEnum.Multiple);
+                else if (battleTypeRandom > 4)
                 {
-                    TurnToBatlle(BattleTypeEnum.Wild_Battle_Double);
+                    TurnToBatlle(BattleTypeEnum.Wild, BattleNumTypeEnum.Double);
                 }
                 else
-                    TurnToBatlle(BattleTypeEnum.Wild_Batlle_Single);
+                    TurnToBatlle(BattleTypeEnum.Wild, BattleNumTypeEnum.Single);
             }
         }
     }
 
-    public void TurnToBatlle(BattleTypeEnum battleTypeEnum)
+    public void TurnToBatlle(BattleTypeEnum battleTypeEnum, BattleNumTypeEnum battleNumTypeEnum)
     {
         Debug.Log("Player Enter Battle. BattleType" + battleTypeEnum);
         playerState = PlayerStateEnum.Battle;

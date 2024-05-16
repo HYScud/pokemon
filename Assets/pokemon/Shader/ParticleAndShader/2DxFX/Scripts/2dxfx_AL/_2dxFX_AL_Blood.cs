@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -23,11 +22,11 @@ public class _2dxFX_AL_Blood : MonoBehaviour
     [HideInInspector] public int BlendMode = 0;
 
     private string shader = "2DxFX/AL/Blood";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
     [HideInInspector] public Texture2D __MainTex2;
-    [HideInInspector] [Range(0f, 1f)] public float TurnToBlood = 0.052f;
-    [HideInInspector] [Range(0.0f, 1f)] public float Blood = 1.0f;
+    [HideInInspector][Range(0f, 1f)] public float TurnToBlood = 0.052f;
+    [HideInInspector][Range(0.0f, 1f)] public float Blood = 1.0f;
 
 
 
@@ -35,7 +34,7 @@ public class _2dxFX_AL_Blood : MonoBehaviour
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -233,7 +232,7 @@ public class _2dxFX_AL_Blood : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
 
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
@@ -257,7 +256,7 @@ public class _2dxFX_AL_Blood : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
 
         if (gameObject.activeSelf && defaultMaterial != null)
         {
@@ -276,7 +275,7 @@ public class _2dxFX_AL_Blood : MonoBehaviour
 
     void OnEnable()
     {
-       
+
 
         if (defaultMaterial == null)
         {

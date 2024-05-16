@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -18,10 +17,10 @@ public class _2dxFX_GrassFX : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/GrassFX";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
-    [HideInInspector] [Range(0.0f, 4f)] public float Heat = 1.0f;
-    [HideInInspector] [Range(0.0f, 4f)] public float Speed = 1.0f;
+    [HideInInspector][Range(0.0f, 4f)] public float Heat = 1.0f;
+    [HideInInspector][Range(0.0f, 4f)] public float Speed = 1.0f;
 
     private AnimationCurve Wind;
     private float WindTime1 = 0;
@@ -30,7 +29,7 @@ public class _2dxFX_GrassFX : MonoBehaviour
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {

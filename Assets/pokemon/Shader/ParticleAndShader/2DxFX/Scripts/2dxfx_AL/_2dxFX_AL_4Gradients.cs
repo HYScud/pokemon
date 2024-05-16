@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -41,7 +40,7 @@ public class _2dxFX_AL_4Gradients : MonoBehaviour
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -264,7 +263,7 @@ public class _2dxFX_AL_4Gradients : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
 
         if (gameObject.activeSelf && defaultMaterial != null)
         {
@@ -283,7 +282,7 @@ public class _2dxFX_AL_4Gradients : MonoBehaviour
 
     void OnEnable()
     {
-       
+
 
 
         if (defaultMaterial == null)

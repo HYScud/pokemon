@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -17,17 +16,17 @@ public class _2dxFX_CircleFade : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/CircleFade";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
-    [HideInInspector] [Range(-0.2f, 1f)] public float _Offset = 0.2f;
-    [HideInInspector] [Range(0, 1)] public int _InOut = 0;
+    [HideInInspector][Range(-0.2f, 1f)] public float _Offset = 0.2f;
+    [HideInInspector][Range(0, 1)] public int _InOut = 0;
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
 
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {

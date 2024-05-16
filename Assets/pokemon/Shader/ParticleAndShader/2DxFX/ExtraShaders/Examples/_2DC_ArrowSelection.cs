@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class _2DC_ArrowSelection : MonoBehaviour {
+public class _2DC_ArrowSelection : MonoBehaviour
+{
 
     public Camera cam;
 
@@ -11,14 +10,14 @@ public class _2DC_ArrowSelection : MonoBehaviour {
     public float posx;
     private float timeskip;
     private float timemult;
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
-     
-	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         if (timeskip < 1) timemult = 1;
         if (timeskip > 1) timemult = 1.2f;
@@ -51,18 +50,18 @@ public class _2DC_ArrowSelection : MonoBehaviour {
     void OnMouseDrag()
     {
         pos = cam.transform.position;
-        pos.x -=posx*timemult;
+        pos.x -= posx * timemult;
         cam.transform.position = pos;
-        timeskip+=Time.deltaTime;
-   
+        timeskip += Time.deltaTime;
+
     }
-   
+
     void OnMouseExit()
     {
-         timeskip = 0;
+        timeskip = 0;
     }
     void OnMouseUp()
     {
-         timeskip = 0;
+        timeskip = 0;
     }
 }

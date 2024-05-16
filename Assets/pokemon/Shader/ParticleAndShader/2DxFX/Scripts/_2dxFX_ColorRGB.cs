@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -17,18 +16,18 @@ public class _2dxFX_ColorRGB : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/ColorRGB";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
-    [HideInInspector] [Range(-1, 1)] public float _ColorR = -0.5f;
-    [HideInInspector] [Range(-1, 1)] public float _ColorG = 0.5f;
-    [HideInInspector] [Range(-1, 1)] public float _ColorB = 0.5f;
+    [HideInInspector][Range(-1, 1)] public float _ColorR = -0.5f;
+    [HideInInspector][Range(-1, 1)] public float _ColorG = 0.5f;
+    [HideInInspector][Range(-1, 1)] public float _ColorB = 0.5f;
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
 
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -144,7 +143,7 @@ public class _2dxFX_ColorRGB : MonoBehaviour
 
     void OnDestroy()
     {
-  
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -166,61 +165,61 @@ public class _2dxFX_ColorRGB : MonoBehaviour
         }
     }
     void OnDisable()
-{
-
-    if (gameObject.activeSelf && defaultMaterial != null)
     {
-        if (CanvasSpriteRenderer != null)
-        {
-            CanvasSpriteRenderer.sharedMaterial = defaultMaterial;
-            CanvasSpriteRenderer.sharedMaterial.hideFlags = HideFlags.None;
-        }
-        else if (CanvasImage != null)
-        {
-            CanvasImage.material = defaultMaterial;
-            CanvasImage.material.hideFlags = HideFlags.None;
-        }
-    }
-}
 
-void OnEnable()
-{
-
-    if (defaultMaterial == null)
-    {
-        defaultMaterial = new Material(Shader.Find("Sprites/Default"));
-
-
-    }
-    if (ForceMaterial == null)
-    {
-        ActiveChange = true;
-        tempMaterial = new Material(Shader.Find(shader));
-        tempMaterial.hideFlags = HideFlags.None;
-        if (CanvasSpriteRenderer != null)
+        if (gameObject.activeSelf && defaultMaterial != null)
         {
-            CanvasSpriteRenderer.sharedMaterial = tempMaterial;
-        }
-        else if (CanvasImage != null)
-        {
-            CanvasImage.material = tempMaterial;
-        }
-    }
-    else
-    {
-        ForceMaterial.shader = Shader.Find(shader);
-        ForceMaterial.hideFlags = HideFlags.None;
-        if (CanvasSpriteRenderer != null)
-        {
-            CanvasSpriteRenderer.sharedMaterial = ForceMaterial;
-        }
-        else if (CanvasImage != null)
-        {
-            CanvasImage.material = ForceMaterial;
+            if (CanvasSpriteRenderer != null)
+            {
+                CanvasSpriteRenderer.sharedMaterial = defaultMaterial;
+                CanvasSpriteRenderer.sharedMaterial.hideFlags = HideFlags.None;
+            }
+            else if (CanvasImage != null)
+            {
+                CanvasImage.material = defaultMaterial;
+                CanvasImage.material.hideFlags = HideFlags.None;
+            }
         }
     }
 
-}
+    void OnEnable()
+    {
+
+        if (defaultMaterial == null)
+        {
+            defaultMaterial = new Material(Shader.Find("Sprites/Default"));
+
+
+        }
+        if (ForceMaterial == null)
+        {
+            ActiveChange = true;
+            tempMaterial = new Material(Shader.Find(shader));
+            tempMaterial.hideFlags = HideFlags.None;
+            if (CanvasSpriteRenderer != null)
+            {
+                CanvasSpriteRenderer.sharedMaterial = tempMaterial;
+            }
+            else if (CanvasImage != null)
+            {
+                CanvasImage.material = tempMaterial;
+            }
+        }
+        else
+        {
+            ForceMaterial.shader = Shader.Find(shader);
+            ForceMaterial.hideFlags = HideFlags.None;
+            if (CanvasSpriteRenderer != null)
+            {
+                CanvasSpriteRenderer.sharedMaterial = ForceMaterial;
+            }
+            else if (CanvasImage != null)
+            {
+                CanvasImage.material = ForceMaterial;
+            }
+        }
+
+    }
 }
 
 

@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -19,16 +18,16 @@ public class _2dxFX_Flame : MonoBehaviour
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/Flame";
     [HideInInspector] public Texture2D __MainTex2;
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
-    [HideInInspector] [Range(-2f, 2f)] public float _Speed = 1f;
-    [HideInInspector] [Range(0f, 2f)] public float _Intensity = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(-2f, 2f)] public float _Speed = 1f;
+    [HideInInspector][Range(0f, 2f)] public float _Intensity = 1f;
 
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {

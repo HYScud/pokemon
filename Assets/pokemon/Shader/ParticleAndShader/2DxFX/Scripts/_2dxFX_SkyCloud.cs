@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -18,18 +17,18 @@ public class _2dxFX_SkyCloud : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/SkyCloud";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
     [HideInInspector] public Texture2D __MainTex2;
     [HideInInspector] public float _OffsetX;
     [HideInInspector] public float _OffsetY;
-    [HideInInspector] [Range(0.1f, 2f)] public float _Zoom = 0.2f;
-    [HideInInspector] [Range(-1, 1)] public float _Intensity = 0.3f;
+    [HideInInspector][Range(0.1f, 2f)] public float _Zoom = 0.2f;
+    [HideInInspector][Range(-1, 1)] public float _Intensity = 0.3f;
 
     [HideInInspector] public bool _AutoScrollX;
-    [HideInInspector] [Range(-2, 2)] public float _AutoScrollSpeedX = 0.08f;
+    [HideInInspector][Range(-2, 2)] public float _AutoScrollSpeedX = 0.08f;
     [HideInInspector] public bool _AutoScrollY;
-    [HideInInspector] [Range(-2, 2)] public float _AutoScrollSpeedY = 0.02f;
+    [HideInInspector][Range(-2, 2)] public float _AutoScrollSpeedY = 0.02f;
     [HideInInspector] private float _AutoScrollCountX;
     [HideInInspector] private float _AutoScrollCountY;
 
@@ -38,7 +37,7 @@ public class _2dxFX_SkyCloud : MonoBehaviour
 
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -229,7 +228,7 @@ public class _2dxFX_SkyCloud : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -255,7 +254,7 @@ public class _2dxFX_SkyCloud : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
         if (ForceMaterial != null && tempMaterial != null)
         {
             DestroyImmediate(tempMaterial);
@@ -275,7 +274,7 @@ public class _2dxFX_SkyCloud : MonoBehaviour
 
     void OnEnable()
     {
-       
+
 
         if (defaultMaterial == null)
         {

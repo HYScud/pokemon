@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -22,7 +21,7 @@ public class _2dxFX_4Gradients : MonoBehaviour
     [HideInInspector] public Color _Color2 = new Color(1f, 1f, 0f, 1f);
     [HideInInspector] public Color _Color3 = new Color(0f, 1f, 1f, 1f);
     [HideInInspector] public Color _Color4 = new Color(0f, 1f, 0f, 1f);
-    [Range(0, 1)] [HideInInspector] public float _Alpha = 1f;
+    [Range(0, 1)][HideInInspector] public float _Alpha = 1f;
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
@@ -257,7 +256,7 @@ public class _2dxFX_4Gradients_Editor : Editor
             r = GUILayoutUtility.GetRect(ih, result);
             EditorGUI.DrawTextureTransparent(r, icon);
         }
-        EditorGUILayout.PropertyField(m_object.FindProperty("ActiveUpdate"), new GUIContent("Active Update", "Active Update, for animation / Animator only")); 
+        EditorGUILayout.PropertyField(m_object.FindProperty("ActiveUpdate"), new GUIContent("Active Update", "Active Update, for animation / Animator only"));
         EditorGUILayout.PropertyField(m_object.FindProperty("ForceMaterial"), new GUIContent("Shared Material", "Use a unique material, reduce drastically the use of draw call"));
 
         if (_2dxScript.ForceMaterial == null)

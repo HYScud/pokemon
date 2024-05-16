@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +12,7 @@ public class SpriteAnimator
 
     public List<Sprite> SpriteList { get => spriteList; set => spriteList = value; }
 
-    public SpriteAnimator(SpriteRenderer spriteRenderer, List<Sprite> spriteList, float frameRate=0.16f)
+    public SpriteAnimator(SpriteRenderer spriteRenderer, List<Sprite> spriteList, float frameRate = 0.16f)
     {
         this.spriteRenderer = spriteRenderer;
         this.SpriteList = spriteList;
@@ -26,8 +24,8 @@ public class SpriteAnimator
     {
         this.currentFrame = 0;
         this.timer = 0;
-        if(this.SpriteList!=null&&this.SpriteList.Count>0)
-        spriteRenderer.sprite = SpriteList[0];
+        if (this.SpriteList != null && this.SpriteList.Count > 0)
+            spriteRenderer.sprite = SpriteList[0];
     }
 
     // 处理图片变化
@@ -36,7 +34,7 @@ public class SpriteAnimator
         timer += Time.deltaTime;
         if (timer > frameRate)
         {
-            currentFrame=(currentFrame+1)%SpriteList.Count;
+            currentFrame = (currentFrame + 1) % SpriteList.Count;
             spriteRenderer.sprite = SpriteList[currentFrame];
             timer -= frameRate;
         }
@@ -44,7 +42,7 @@ public class SpriteAnimator
 
     public void SetDefaultSprite()
     {
-        if (spriteRenderer != null &&spriteList!=null&& spriteList.Count > 0)
+        if (spriteRenderer != null && spriteList != null && spriteList.Count > 0)
         {
             spriteRenderer.sprite = spriteList[0];
         }

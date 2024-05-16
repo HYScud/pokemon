@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -23,18 +22,18 @@ public class _2dxFX_AL_PixelDie : MonoBehaviour
     [HideInInspector] public int BlendMode = 0;
 
     private string shader = "2DxFX/AL/PixelDie";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
     [HideInInspector] public Texture2D __MainTex2;
-    [HideInInspector] [Range(0, 1)] public float _Value1 = 0.5f;
-    [HideInInspector] [Range(0, 1)] public float _Value2 = 1;
-    [HideInInspector] [Range(0, 1)] public float _Value3 = 1;
+    [HideInInspector][Range(0, 1)] public float _Value1 = 0.5f;
+    [HideInInspector][Range(0, 1)] public float _Value2 = 1;
+    [HideInInspector][Range(0, 1)] public float _Value3 = 1;
     [HideInInspector] public float _Value4;
 
     [HideInInspector] public bool _AutoScrollX;
-    [HideInInspector] [Range(0, 10)] public float _AutoScrollSpeedX;
+    [HideInInspector][Range(0, 10)] public float _AutoScrollSpeedX;
     [HideInInspector] public bool _AutoScrollY;
-    [HideInInspector] [Range(0, 10)] public float _AutoScrollSpeedY;
+    [HideInInspector][Range(0, 10)] public float _AutoScrollSpeedY;
     [HideInInspector] private float _AutoScrollCountX;
     [HideInInspector] private float _AutoScrollCountY;
 
@@ -42,7 +41,7 @@ public class _2dxFX_AL_PixelDie : MonoBehaviour
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -254,7 +253,7 @@ public class _2dxFX_AL_PixelDie : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -277,7 +276,7 @@ public class _2dxFX_AL_PixelDie : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
         if (gameObject.activeSelf && defaultMaterial != null)
         {
             if (CanvasSpriteRenderer != null)
@@ -295,7 +294,7 @@ public class _2dxFX_AL_PixelDie : MonoBehaviour
 
     void OnEnable()
     {
-       
+
 
         if (defaultMaterial == null)
         {

@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -23,16 +22,16 @@ public class _2dxFX_AL_Pattern : MonoBehaviour
     [HideInInspector] public int BlendMode = 0;
 
     private string shader = "2DxFX/AL/Pattern";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
     [HideInInspector] public Texture2D __MainTex2;
     [HideInInspector] public float _OffsetX;
     [HideInInspector] public float _OffsetY;
 
     [HideInInspector] public bool _AutoScrollX;
-    [HideInInspector] [Range(-3, 3)] public float _AutoScrollSpeedX;
+    [HideInInspector][Range(-3, 3)] public float _AutoScrollSpeedX;
     [HideInInspector] public bool _AutoScrollY;
-    [HideInInspector] [Range(-3, 3)] public float _AutoScrollSpeedY;
+    [HideInInspector][Range(-3, 3)] public float _AutoScrollSpeedY;
     [HideInInspector] private float _AutoScrollCountX;
     [HideInInspector] private float _AutoScrollCountY;
 
@@ -41,7 +40,7 @@ public class _2dxFX_AL_Pattern : MonoBehaviour
 
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -282,7 +281,7 @@ public class _2dxFX_AL_Pattern : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -308,7 +307,7 @@ public class _2dxFX_AL_Pattern : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
         if (ForceMaterial != null && tempMaterial != null)
         {
             DestroyImmediate(tempMaterial);
@@ -328,7 +327,7 @@ public class _2dxFX_AL_Pattern : MonoBehaviour
 
     void OnEnable()
     {
-       
+
 
         defaultMaterial = new Material(Shader.Find("Sprites/Default"));
 

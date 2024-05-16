@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -17,18 +16,18 @@ public class _2dxFX_Offset : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/Offset";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
-    [HideInInspector] [Range(-1f, 1f)] public float _OffsetX = 0f;
-    [HideInInspector] [Range(-1f, 1f)] public float _OffsetY = 0f;
-    [HideInInspector] [Range(0.001f, 8f)] public float _ZoomX = 1f;
-    [HideInInspector] [Range(0.001f, 8f)] public float _ZoomY = 1f;
-    [HideInInspector] [Range(0.001f, 64f)] public float _ZoomXY = 1f;
+    [HideInInspector][Range(-1f, 1f)] public float _OffsetX = 0f;
+    [HideInInspector][Range(-1f, 1f)] public float _OffsetY = 0f;
+    [HideInInspector][Range(0.001f, 8f)] public float _ZoomX = 1f;
+    [HideInInspector][Range(0.001f, 8f)] public float _ZoomY = 1f;
+    [HideInInspector][Range(0.001f, 64f)] public float _ZoomXY = 1f;
 
     [HideInInspector] public bool _AutoScrollX;
-    [HideInInspector] [Range(-100, 100)] public float _AutoScrollSpeedX;
+    [HideInInspector][Range(-100, 100)] public float _AutoScrollSpeedX;
     [HideInInspector] public bool _AutoScrollY;
-    [HideInInspector] [Range(-100, 100)] public float _AutoScrollSpeedY;
+    [HideInInspector][Range(-100, 100)] public float _AutoScrollSpeedY;
     [HideInInspector] private float _AutoScrollCountX;
     [HideInInspector] private float _AutoScrollCountY;
 
@@ -37,7 +36,7 @@ public class _2dxFX_Offset : MonoBehaviour
 
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -196,7 +195,7 @@ public class _2dxFX_Offset : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -219,7 +218,7 @@ public class _2dxFX_Offset : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
         if (gameObject.activeSelf && defaultMaterial != null)
         {
             if (CanvasSpriteRenderer != null)
@@ -237,7 +236,7 @@ public class _2dxFX_Offset : MonoBehaviour
 
     void OnEnable()
     {
-       
+
         if (defaultMaterial == null)
         {
             defaultMaterial = new Material(Shader.Find("Sprites/Default"));

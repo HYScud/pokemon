@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -17,7 +16,7 @@ public class _2dxFX_GrayScale : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/GrayScale";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
     [Range(0, 1)] public float _EffectAmount = 1f;
 
@@ -25,7 +24,7 @@ public class _2dxFX_GrayScale : MonoBehaviour
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -139,7 +138,7 @@ public class _2dxFX_GrayScale : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -162,7 +161,7 @@ public class _2dxFX_GrayScale : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
         if (gameObject.activeSelf && defaultMaterial != null)
         {
             if (CanvasSpriteRenderer != null)
@@ -180,7 +179,7 @@ public class _2dxFX_GrayScale : MonoBehaviour
 
     void OnEnable()
     {
-       
+
         if (defaultMaterial == null)
         {
             defaultMaterial = new Material(Shader.Find("Sprites/Default"));

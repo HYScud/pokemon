@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -19,16 +18,16 @@ public class _2dxFX_Shiny_Reflect : MonoBehaviour
     [HideInInspector] public bool ActiveChange = true;
     [HideInInspector] public Texture2D __MainTex2;
     private string shader = "2DxFX/Standard/Shiny_Reflect";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
-    [HideInInspector] [Range(-0.5f, 1.5f)] public float Light = 1.0f;
-    [HideInInspector] [Range(0.05f, 1f)] public float LightSize = 0.5f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(-0.5f, 1.5f)] public float Light = 1.0f;
+    [HideInInspector][Range(0.05f, 1f)] public float LightSize = 0.5f;
     [HideInInspector] public bool UseShinyCurve = true;
     [HideInInspector] public AnimationCurve ShinyLightCurve;
 
-    [HideInInspector] [Range(0, 32)] public float AnimationSpeedReduction = 3f;
-    [HideInInspector] [Range(0f, 2f)] public float Intensity = 1.0f;
-    [HideInInspector] [Range(0f, 1f)] public float OnlyLight = 0.0f;
-    [HideInInspector] [Range(-1f, 1f)] public float LightBump = 0.05f;
+    [HideInInspector][Range(0, 32)] public float AnimationSpeedReduction = 3f;
+    [HideInInspector][Range(0f, 2f)] public float Intensity = 1.0f;
+    [HideInInspector][Range(0f, 1f)] public float OnlyLight = 0.0f;
+    [HideInInspector][Range(-1f, 1f)] public float LightBump = 0.05f;
     private float ShinyLightCurveTime;
 
 
@@ -38,7 +37,7 @@ public class _2dxFX_Shiny_Reflect : MonoBehaviour
 
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -231,7 +230,7 @@ public class _2dxFX_Shiny_Reflect : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -254,7 +253,7 @@ public class _2dxFX_Shiny_Reflect : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
         if (gameObject.activeSelf && defaultMaterial != null)
         {
             if (CanvasSpriteRenderer != null)
@@ -272,7 +271,7 @@ public class _2dxFX_Shiny_Reflect : MonoBehaviour
 
     void OnEnable()
     {
-       
+
         if (defaultMaterial == null)
         {
             defaultMaterial = new Material(Shader.Find("Sprites/Default"));

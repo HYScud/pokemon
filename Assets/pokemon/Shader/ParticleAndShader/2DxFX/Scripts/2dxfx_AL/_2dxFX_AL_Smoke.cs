@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -23,20 +22,20 @@ public class _2dxFX_AL_Smoke : MonoBehaviour
     [HideInInspector] public int BlendMode = 0;
 
     private string shader = "2DxFX/AL/Smoke";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
     [HideInInspector] public Texture2D __MainTex2;
-    [HideInInspector] [Range(64, 256)] public float _Value1 = 64;
-    [HideInInspector] [Range(0, 1)] public float _TurnToSmoke = 0.75f;
-    [HideInInspector] [Range(0, 1)] public float _Value3 = 1;
+    [HideInInspector][Range(64, 256)] public float _Value1 = 64;
+    [HideInInspector][Range(0, 1)] public float _TurnToSmoke = 0.75f;
+    [HideInInspector][Range(0, 1)] public float _Value3 = 1;
     [HideInInspector] public float _Value4;
     [HideInInspector] public Color _Color1 = new Color(1f, 0f, 1f, 1f);
     [HideInInspector] public Color _Color2 = new Color(1f, 1f, 1f, 1f);
 
     [HideInInspector] public bool _AutoScrollX;
-    [HideInInspector] [Range(0, 10)] public float _AutoScrollSpeedX;
+    [HideInInspector][Range(0, 10)] public float _AutoScrollSpeedX;
     [HideInInspector] public bool _AutoScrollY;
-    [HideInInspector] [Range(0, 10)] public float _AutoScrollSpeedY;
+    [HideInInspector][Range(0, 10)] public float _AutoScrollSpeedY;
     [HideInInspector] private float _AutoScrollCountX;
     [HideInInspector] private float _AutoScrollCountY;
 
@@ -44,7 +43,7 @@ public class _2dxFX_AL_Smoke : MonoBehaviour
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -267,7 +266,7 @@ public class _2dxFX_AL_Smoke : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -290,7 +289,7 @@ public class _2dxFX_AL_Smoke : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
         if (gameObject.activeSelf && defaultMaterial != null)
         {
             if (CanvasSpriteRenderer != null)
@@ -308,7 +307,7 @@ public class _2dxFX_AL_Smoke : MonoBehaviour
 
     void OnEnable()
     {
-       
+
 
         if (defaultMaterial == null)
         {

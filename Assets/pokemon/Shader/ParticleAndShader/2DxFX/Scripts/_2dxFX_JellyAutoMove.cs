@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -18,13 +17,13 @@ public class _2dxFX_JellyAutoMove : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/Jelly";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
-    [HideInInspector] [Range(0.0f, 4f)] public float Heat = 1.0f;
-    [HideInInspector] [Range(0.0f, 4f)] public float RandomPos = 1.0f;
-    [HideInInspector] [Range(1f, 2f)] public float Inside = 1.0f;
-    [HideInInspector] [Range(1f, 8f)] public float Stabilisation = 4.0f;
-    [HideInInspector] [Range(0.0f, 4f)] public float Speed = 1.0f;
+    [HideInInspector][Range(0.0f, 4f)] public float Heat = 1.0f;
+    [HideInInspector][Range(0.0f, 4f)] public float RandomPos = 1.0f;
+    [HideInInspector][Range(1f, 2f)] public float Inside = 1.0f;
+    [HideInInspector][Range(1f, 8f)] public float Stabilisation = 4.0f;
+    [HideInInspector][Range(0.0f, 4f)] public float Speed = 1.0f;
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
@@ -34,7 +33,7 @@ public class _2dxFX_JellyAutoMove : MonoBehaviour
     Vector3 SaveMove1;
     Vector3 SaveMove2;
 
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -163,7 +162,7 @@ public class _2dxFX_JellyAutoMove : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -186,7 +185,7 @@ public class _2dxFX_JellyAutoMove : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
         if (gameObject.activeSelf && defaultMaterial != null)
         {
             if (CanvasSpriteRenderer != null)
@@ -204,7 +203,7 @@ public class _2dxFX_JellyAutoMove : MonoBehaviour
 
     void OnEnable()
     {
-       
+
         if (defaultMaterial == null)
         {
             defaultMaterial = new Material(Shader.Find("Sprites/Default"));

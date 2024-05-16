@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -17,16 +16,16 @@ public class _2dxFX_Blur : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/Blur";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
-    [HideInInspector] [Range(0.0f, 10f)] public float Blur = 4.0f;
+    [HideInInspector][Range(0.0f, 10f)] public float Blur = 4.0f;
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
 
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -277,7 +276,7 @@ public class _2dxFX_Blur_Editor : Editor
         {
 
             EditorGUILayout.BeginVertical("Box");
-      
+
             Texture2D icone = Resources.Load("2dxfx-icon-blur") as Texture2D;
             EditorGUILayout.PropertyField(m_object.FindProperty("Blur"), new GUIContent("Blur", icone, "Change the size of the blur"));
 

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -30,7 +29,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private CharacterAnimator animator;
     internal PlayerActionStateEnum CurState { get => curState; set => curState = value; }
-     
+
     public void ChangeMoveX(float moveX)
     {
         animator.MoveX = moveX;
@@ -38,7 +37,7 @@ public class PlayerAnimator : MonoBehaviour
 
     public void ChangeMoveY(float moveY)
     {
-        animator.MoveY= moveY;
+        animator.MoveY = moveY;
     }
     public void ChangeisMoving(bool isMoving)
     {
@@ -52,7 +51,7 @@ public class PlayerAnimator : MonoBehaviour
         animator = GetComponent<CharacterAnimator>();
         this.SetCurrentSpritesGroup();
     }
-   
+
     private void SetCurrentSpritesGroup()
     {
         Debug.Log("…Ë÷√∂Øª≠Õº∆¨◊È");

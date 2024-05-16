@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -18,22 +17,22 @@ public class _2dxFX_Waterfall : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/Waterfall";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
     [HideInInspector] public Texture2D __MainTex2;
-    [HideInInspector] [Range(0.0f, 2f)] public float Liquid = 1.0f;
-    [HideInInspector] [Range(-2.0f, 4f)] public float Speed = 1.0f;
-    [HideInInspector] [Range(-2f, 2f)] public float EValue = -0.65f;
-    [HideInInspector] [Range(-2f, 2f)] public float TValue = 0.6f;
+    [HideInInspector][Range(0.0f, 2f)] public float Liquid = 1.0f;
+    [HideInInspector][Range(-2.0f, 4f)] public float Speed = 1.0f;
+    [HideInInspector][Range(-2f, 2f)] public float EValue = -0.65f;
+    [HideInInspector][Range(-2f, 2f)] public float TValue = 0.6f;
     [HideInInspector] public Color LightColor = new Color(0.2f, 0.5f, 1, 1);
-    [HideInInspector] [Range(-1f, 1f)] public float Light = 0.5f;
+    [HideInInspector][Range(-1f, 1f)] public float Light = 0.5f;
 
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -175,7 +174,7 @@ public class _2dxFX_Waterfall : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -198,7 +197,7 @@ public class _2dxFX_Waterfall : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
         if (gameObject.activeSelf && defaultMaterial != null)
         {
             if (CanvasSpriteRenderer != null)
@@ -216,7 +215,7 @@ public class _2dxFX_Waterfall : MonoBehaviour
 
     void OnEnable()
     {
-       
+
         if (defaultMaterial == null)
         {
             defaultMaterial = new Material(Shader.Find("Sprites/Default"));

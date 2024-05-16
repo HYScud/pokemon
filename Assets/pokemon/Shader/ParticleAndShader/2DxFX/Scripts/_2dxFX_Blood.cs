@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -18,11 +17,11 @@ public class _2dxFX_Blood : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/Blood";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
     [HideInInspector] public Texture2D __MainTex2;
-    [HideInInspector] [Range(0f, 1f)] public float TurnToBlood = 0.140f;
-    [HideInInspector] [Range(0.0f, 1f)] public float Blood = 0.141f;
+    [HideInInspector][Range(0f, 1f)] public float TurnToBlood = 0.140f;
+    [HideInInspector][Range(0.0f, 1f)] public float Blood = 0.141f;
 
 
 
@@ -30,7 +29,7 @@ public class _2dxFX_Blood : MonoBehaviour
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {

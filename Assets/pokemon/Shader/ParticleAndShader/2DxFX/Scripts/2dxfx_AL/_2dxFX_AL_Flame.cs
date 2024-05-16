@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -25,16 +24,16 @@ public class _2dxFX_AL_Flame : MonoBehaviour
 
     private string shader = "2DxFX/AL/Flame";
     [HideInInspector] public Texture2D __MainTex2;
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
-    [HideInInspector] [Range(-2f, 2f)] public float _Speed = 1f;
-    [HideInInspector] [Range(0f, 2f)] public float _Intensity = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(-2f, 2f)] public float _Speed = 1f;
+    [HideInInspector][Range(0f, 2f)] public float _Intensity = 1f;
 
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -241,7 +240,7 @@ public class _2dxFX_AL_Flame : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -264,7 +263,7 @@ public class _2dxFX_AL_Flame : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
         if (gameObject.activeSelf && defaultMaterial != null)
         {
             if (CanvasSpriteRenderer != null)
@@ -282,7 +281,7 @@ public class _2dxFX_AL_Flame : MonoBehaviour
 
     void OnEnable()
     {
-       
+
         if (defaultMaterial == null)
         {
             defaultMaterial = new Material(Shader.Find("Sprites/Default"));

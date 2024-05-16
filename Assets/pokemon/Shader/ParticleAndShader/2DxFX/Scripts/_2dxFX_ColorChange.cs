@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -19,18 +18,18 @@ public class _2dxFX_ColorChange : MonoBehaviour
 
     private string shader = "2DxFX/Standard/ColorChange";
 
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
-    [HideInInspector] [Range(0, 1)] public float _Tolerance = 1f;
-    [HideInInspector] [Range(0, 360)] public float _HueShift = 180f;
-    [HideInInspector] [Range(-2, 2)] public float _Saturation = 1f;
-    [HideInInspector] [Range(-2, 2)] public float _ValueBrightness = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Tolerance = 1f;
+    [HideInInspector][Range(0, 360)] public float _HueShift = 180f;
+    [HideInInspector][Range(-2, 2)] public float _Saturation = 1f;
+    [HideInInspector][Range(-2, 2)] public float _ValueBrightness = 1f;
     [HideInInspector] public Color _Color = new Color(0f, 1f, 1f, 1f);
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {

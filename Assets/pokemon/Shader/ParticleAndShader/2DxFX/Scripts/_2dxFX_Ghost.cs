@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -17,20 +16,20 @@ public class _2dxFX_Ghost : MonoBehaviour
     [HideInInspector] public Material ForceMaterial;
     [HideInInspector] public bool ActiveChange = true;
     private string shader = "2DxFX/Standard/Ghost";
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
 
-    [HideInInspector] [Range(0f, 1f)] public float _offset = 0.4f;
-    [HideInInspector] [Range(0f, 1f)] public float _ClipLeft = 0.4f;
-    [HideInInspector] [Range(0f, 1f)] public float _ClipRight = 0.2f;
-    [HideInInspector] [Range(0f, 1f)] public float _ClipUp = 0.1f;
-    [HideInInspector] [Range(0f, 1f)] public float _ClipDown = 0.5f;
+    [HideInInspector][Range(0f, 1f)] public float _offset = 0.4f;
+    [HideInInspector][Range(0f, 1f)] public float _ClipLeft = 0.4f;
+    [HideInInspector][Range(0f, 1f)] public float _ClipRight = 0.2f;
+    [HideInInspector][Range(0f, 1f)] public float _ClipUp = 0.1f;
+    [HideInInspector][Range(0f, 1f)] public float _ClipDown = 0.5f;
 
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {

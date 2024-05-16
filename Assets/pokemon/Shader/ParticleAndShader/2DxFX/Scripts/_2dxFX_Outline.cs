@@ -3,7 +3,6 @@
 //////////////////////////////////////////////
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -19,15 +18,15 @@ public class _2dxFX_Outline : MonoBehaviour
 
     private string shader = "2DxFX/Standard/Outline";
 
-    [HideInInspector] [Range(0, 1)] public float _Alpha = 1f;
+    [HideInInspector][Range(0, 1)] public float _Alpha = 1f;
     [HideInInspector] public Color _ColorX = new Color(1f, 1f, 1f, 1f);
-    [HideInInspector] [Range(0f, 0.020f)] public float _OutLineSpread = 0.007f;
+    [HideInInspector][Range(0f, 0.020f)] public float _OutLineSpread = 0.007f;
 
     [HideInInspector] public int ShaderChange = 0;
     Material tempMaterial;
     Material defaultMaterial;
     Image CanvasImage;
-    SpriteRenderer CanvasSpriteRenderer;[HideInInspector] public bool ActiveUpdate = true;
+    SpriteRenderer CanvasSpriteRenderer; [HideInInspector] public bool ActiveUpdate = true;
 
     void Awake()
     {
@@ -141,7 +140,7 @@ public class _2dxFX_Outline : MonoBehaviour
 
     void OnDestroy()
     {
-       
+
         if ((Application.isPlaying == false) && (Application.isEditor == true))
         {
 
@@ -164,7 +163,7 @@ public class _2dxFX_Outline : MonoBehaviour
     }
     void OnDisable()
     {
-       
+
         if (gameObject.activeSelf && defaultMaterial != null)
         {
             if (CanvasSpriteRenderer != null)
@@ -182,7 +181,7 @@ public class _2dxFX_Outline : MonoBehaviour
 
     void OnEnable()
     {
-       
+
         if (defaultMaterial == null)
         {
             defaultMaterial = new Material(Shader.Find("Sprites/Default"));
