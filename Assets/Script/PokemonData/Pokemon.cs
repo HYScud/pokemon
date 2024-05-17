@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Pokemon
 {
-    private PokemonBase pkBase { get; }
+    public PokemonBase pkBase { get; set; }
 
     //基本信息
     private int level;
@@ -12,7 +12,12 @@ public class Pokemon
     private int catchArea = 0;
     private CatchTypeEnum catchTypeEnum = CatchTypeEnum.None;
     private string nickName = "";
+    private int MaxLevel = 100;
+
+    private SexTypeEnum sexTypeEnum = SexTypeEnum.None;
     private NatrueTypeEnum natrueTypeEnum { get; set; }
+    private ShinyTypeEnum shinyType = ShinyTypeEnum.None;
+
     //努力值
     [SerializeField] int BasePoints_HP = 0;
     [SerializeField] int BasePoints_ATk = 0;
@@ -37,20 +42,33 @@ public class Pokemon
     [SerializeField] int IV_SpecialDef = 0;
     [SerializeField] int IV_Speed = 0;
 
+    public string Name
+    {
+        get { if (nickName == null || nickName == "") return pkBase.PokemonName; else return nickName; }
+    }
     //战斗属性
     public int CurHp { get; set; }
 
-    public int MaxHp { get { if (pkBase.PokemonId == 292) { return 1; } else return Mathf.FloorToInt(((pkBase.Hp * 2 + IV_Hp + BasePoints_HP / 4) * level) / 100f) + 10 + level; } }
-    public int Attack { get { return Mathf.FloorToInt((((pkBase.Attack * 2 + IV_Attack + BasePoints_ATk / 4) * level) / 100f + 5 + level) * PokemonTable.GetNatureEffect(2, natrueTypeEnum)); } }
-    public int Defense { get { return Mathf.FloorToInt((((pkBase.Defence * 2 + IV_Defence + BasePoints_SPATk / 4) * level) / 100f + 5 + level) * PokemonTable.GetNatureEffect(2, natrueTypeEnum)); } }
-    public int SpecailAttack { get { return Mathf.FloorToInt((((pkBase.SpecialATK * 2 + IV_SpecialATK + BasePoints_Def / 4) * level) / 100f + 5 + level) * PokemonTable.GetNatureEffect(2, natrueTypeEnum)); } }
-    public int SpecialDefense { get { return Mathf.FloorToInt((((pkBase.SpecialDef * 2 + IV_SpecialDef + BasePoints_SPDef / 4) * level) / 100f + 5 + level) * PokemonTable.GetNatureEffect(2, natrueTypeEnum)); } }
-    public int Speed { get { return Mathf.FloorToInt((((pkBase.Speed * 2 + IV_Speed + BasePoints_Speed / 4) * level) / 100f + 5 + level) * PokemonTable.GetNatureEffect(2, natrueTypeEnum)); } }
+    public int CurTotalExp { get; set; } = 0;
+
+    public int CurExp { get; set; }
+
+    public int MaxHp { get { if (pkBase.PokemonId == 292) { return 1; } else return Mathf.FloorToInt(((pkBase.Hp * 2 + IV_Hp + BasePoints_HP / 4) * Level) / 100f) + 10 + Level; } }
+    public int Attack { get { return Mathf.FloorToInt((((pkBase.Attack * 2 + IV_Attack + BasePoints_ATk / 4) * Level) / 100f + 5 + Level) * PokemonTable.GetNatureEffect(2, natrueTypeEnum)); } }
+    public int Defense { get { return Mathf.FloorToInt((((pkBase.Defence * 2 + IV_Defence + BasePoints_SPATk / 4) * Level) / 100f + 5 + Level) * PokemonTable.GetNatureEffect(2, natrueTypeEnum)); } }
+    public int SpecailAttack { get { return Mathf.FloorToInt((((pkBase.SpecialATK * 2 + IV_SpecialATK + BasePoints_Def / 4) * Level) / 100f + 5 + Level) * PokemonTable.GetNatureEffect(2, natrueTypeEnum)); } }
+    public int SpecialDefense { get { return Mathf.FloorToInt((((pkBase.SpecialDef * 2 + IV_SpecialDef + BasePoints_SPDef / 4) * Level) / 100f + 5 + Level) * PokemonTable.GetNatureEffect(2, natrueTypeEnum)); } }
+    public int Speed { get { return Mathf.FloorToInt((((pkBase.Speed * 2 + IV_Speed + BasePoints_Speed / 4) * Level) / 100f + 5 + Level) * PokemonTable.GetNatureEffect(2, natrueTypeEnum)); } }
 
     //技能
     private List<Move> moveCache { get; } = new List<Move>();//宝可梦所有可学技能，包含子代技能池
     private List<Move> moveForgetedCache { get; set; } = new List<Move>();//宝可梦所有可学技能，包含子代技能池
     private List<Move> curMoveCache { get; set; } = new List<Move>();
+    public int Level { get => level; set => level = value; }
+    public SexTypeEnum SexTypeEnum { get => sexTypeEnum; set => sexTypeEnum = value; }
+
+    public ShinyTypeEnum ShinyType { get => shinyType; set => shinyType = value; }
+
     private int maxMoveSize = 4;
     public List<Move> GetCurMove()
     {
@@ -84,7 +102,7 @@ public class Pokemon
                 }
                 else if (learnableMove.MoveLearnedTypeEnum == MoveLearnedTypeEnum.Level)
                 {
-                    if (level >= learnableMove.Level)
+                    if (Level >= learnableMove.Level)
                     {
                         WildPokemonAddMove(move);
                     }
@@ -145,14 +163,44 @@ public class Pokemon
         else
             Debug.Log("遗忘技能失败");
     }
+
+    public int GetNextLevelExp()
+    {
+        int num = 0;
+        if (pkBase != null)
+        {
+            num = CommonUtils.GetExpByLevel(Level + 1, pkBase.ExpType) - CommonUtils.GetExpByLevel(Level + 1, pkBase.ExpType);
+        }
+        else { Debug.LogError("pkBase is null"); }
+        return num;
+    }
+
+    public float GetCurExpRatio()
+    {
+        int nextLevelTotalExp = CommonUtils.GetExpByLevel(Level + 1, pkBase.ExpType);
+        int expDetal = CommonUtils.GetExpByLevel(Level + 1, pkBase.ExpType) - CurExp;
+        int curLevelExp = GetNextLevelExp();
+        if (curLevelExp > 0)
+        {
+            return expDetal / curLevelExp;
+        }
+        else
+        {
+            if (Level >= 100)
+                return 1;
+            else
+                return 0;
+        }
+    }
     /*初始化信息（一些没有在构造函数处理的）*/
     public void Init()
     {
-        if (pkBase != null && pkBase.ShinyType != ShinyTypeEnum.None)
-        {
-            pkBase.FrontSprite = Resources.Load("PokemonSprite/Front_Shiny/" + pkBase.PokemonId + "_0", typeof(Sprite)) as Sprite;
-            pkBase.BackSprite = Resources.Load("PokemonSprite/Back_Shiny/" + pkBase.PokemonId + "_0", typeof(Sprite)) as Sprite; ;
-        }
+        InitCurHp();
+    }
+    /*初始化血量*/
+    public void InitCurHp()
+    {
+        CurHp = MaxHp;
     }
     /*随机个体*/
     public void RandomIV()
@@ -168,7 +216,7 @@ public class Pokemon
     public Pokemon(PokemonBase pkBase, int level, long id, long ownerId, int catchArea, CatchTypeEnum catchTypeEnum, string nickName, int basePoints_HP, int basePoints_ATk, int basePoints_SPATk, int basePoints_Def, int basePoints_SPDef, int basePoints_Speed, int basePoints_Friendship, int basePoints_Beauty, int basePoints_Cute, int basePoints_Smart, int basePoints_Cool, int basePoints_Tough, int iV_Hp, int iV_Attack, int iV_Defence, int iV_SpecialATK, int iV_SpecialDef, int iV_Speed, int curHp, List<Move> moveCache, List<Move> moveForgetedCache, List<Move> curMoveCache, int maxMoveSize, NatrueTypeEnum natrueTypeEnum)
     {
         this.pkBase = pkBase ?? throw new System.ArgumentNullException(nameof(pkBase));
-        this.level = level;
+        this.Level = level;
         Id = id;
         this.ownerId = ownerId;
         this.catchArea = catchArea;
@@ -204,7 +252,7 @@ public class Pokemon
     public Pokemon(PokemonBase pkBase, int level, long id, long ownerId, int catchArea, CatchTypeEnum catchTypeEnum, string nickName, int basePoints_HP, int basePoints_ATk, int basePoints_SPATk, int basePoints_Def, int basePoints_SPDef, int basePoints_Speed, int basePoints_Friendship, int basePoints_Beauty, int basePoints_Cute, int basePoints_Smart, int basePoints_Cool, int basePoints_Tough, int iV_Hp, int iV_Attack, int iV_Defence, int iV_SpecialATK, int iV_SpecialDef, int iV_Speed, int curHp, NatrueTypeEnum natrueTypeEnum)
     {
         this.pkBase = pkBase ?? throw new System.ArgumentNullException(nameof(pkBase));
-        this.level = level;
+        this.Level = level;
         Id = id;
         this.ownerId = ownerId;
         this.catchArea = catchArea;
@@ -233,13 +281,21 @@ public class Pokemon
     }
 
     //生成野生的构造函数（不带技能池）
-    public Pokemon(PokemonBase pkBase, int level, long id, long ownerId, int curHp, NatrueTypeEnum natrueTypeEnum)
+    public Pokemon(PokemonBase pkBase, int level, long id, NatrueTypeEnum natrueTypeEnum)
     {
         this.pkBase = pkBase ?? throw new System.ArgumentNullException(nameof(pkBase));
-        this.level = level;
+        this.Level = level;
+        Id = id;
+        CurHp = MaxHp;
+        this.natrueTypeEnum = natrueTypeEnum;
+    }
+    public Pokemon(PokemonBase pkBase, int level, long id, long ownerId, NatrueTypeEnum natrueTypeEnum)
+    {
+        this.pkBase = pkBase ?? throw new System.ArgumentNullException(nameof(pkBase));
+        this.Level = level;
         Id = id;
         this.ownerId = ownerId;
-        CurHp = curHp;
+        CurHp = MaxHp;
         this.natrueTypeEnum = natrueTypeEnum;
     }
 }

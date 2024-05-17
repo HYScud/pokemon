@@ -37,11 +37,30 @@ public enum BattleNumTypeEnum
 /******************战斗枚举End**********************/
 
 /******************宝可梦枚举**********************/
-public enum PokemonType
+public enum PokemonTypeEnum
 {
     Normal,
     Alpha,
 }
+
+public enum ExpTypeEnum
+{
+    Best_Fast,
+    Faster,
+    Fast,
+    Slow,
+    Slower,
+    Best_Slow,
+}
+
+public enum SexTypeEnum
+{
+    None,
+    Male,
+    Female,
+    UnKnown
+}
+
 public enum TypeEnum
 {
     None,//无属性

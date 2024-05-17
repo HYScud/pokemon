@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerAnimator = GetComponent<PlayerAnimator>();
-        playerInfo = new PlayerDataStore();
+        playerInfo = new PlayerDataStore(1,"luyisac");
     }
     // Start is called before the first frame update
     void Start()
@@ -162,7 +162,6 @@ public class PlayerController : MonoBehaviour
         playerState = PlayerStateEnum.Normal;
         this.SetOrder();
         CheckForEncounters();
-
     }
 
     public bool CheckWalkable(Vector3 targetPos)

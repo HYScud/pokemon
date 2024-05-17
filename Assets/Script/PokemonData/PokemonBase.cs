@@ -7,7 +7,6 @@ public class PokemonBase : ScriptableObject
     //基本信息
     [SerializeField] int pokemonId;//宝可梦编号—>同一宝可梦相同
     [SerializeField] string pokemonName;
-    [SerializeField] ShinyTypeEnum shinyType = ShinyTypeEnum.None;
     [SerializeField] TypeEnum pokemonType1 = TypeEnum.None;
     [SerializeField] TypeEnum pokemonType2 = TypeEnum.None;
     [TextArea]
@@ -16,7 +15,7 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int catchRatio = 75;
     [SerializeField] Sprite frontSprite;
     [SerializeField] Sprite backSprite;
-
+    [SerializeField] ExpTypeEnum expType=ExpTypeEnum.Slow;
     //基本属性
     [SerializeField] int hp;
     [SerializeField] int attack;
@@ -29,7 +28,6 @@ public class PokemonBase : ScriptableObject
 
     public int PokemonId { get => pokemonId; }
     public string PokemonName { get => pokemonName; }
-    public ShinyTypeEnum ShinyType { get => shinyType; }
     public TypeEnum PokemonType1 { get => pokemonType1; }
     public TypeEnum PokemonType2 { get => pokemonType2; }
     public string PokemonDesc { get => pokemonDesc; }
@@ -46,4 +44,5 @@ public class PokemonBase : ScriptableObject
     public List<LearnableMove> AllLearnableMoves { get => allLearnableMoves; }
     public Sprite FrontSprite { get => frontSprite; set => frontSprite = value; }
     public Sprite BackSprite { get => backSprite; set => backSprite = value; }
+    public ExpTypeEnum ExpType { get => expType;}
 }
